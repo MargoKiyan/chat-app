@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
+/* Базові стилі сторінки */
 body {
   margin: 0;
   padding: 0;
@@ -11,37 +12,45 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  background: url('/img/background.jpg') no-repeat center center/cover;
-  overflow: hidden;
+  background: url('/img/background.jpg') no-repeat center center / cover;
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
 }
 
+/* WebKit (Chrome, Safari, Edge) */
 body::-webkit-scrollbar {
   width: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.7);
+  height: 8px;
 }
 
 body::-webkit-scrollbar-track {
   background: transparent;
 }
 
+body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+
+/* Контейнер повідомлень */
 #message-container {
   flex-grow: 1;
   width: 90%;
   max-width: 1200px;
   height: calc(100vh - 200px);
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 25px;
-  margin-top: 65px;
-  margin-bottom: 20px;
+  margin: 65px 0 20px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
@@ -50,23 +59,33 @@ body::-webkit-scrollbar-track {
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   scroll-behavior: smooth;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
 }
 
+/* WebKit для message-container */
 #message-container::-webkit-scrollbar {
   width: 6px;
 }
-#message-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-#message-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.7);
-}
+
 #message-container::-webkit-scrollbar-track {
   background: transparent;
 }
 
+#message-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+#message-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Стилі для повідомлень */
 #message-container div {
   background: rgba(255, 255, 255, 0.2);
   padding: 10px 15px;
@@ -78,6 +97,7 @@ body::-webkit-scrollbar-track {
   max-width: 70%;
 }
 
+/* Системні повідомлення */
 .message-system {
   background: rgba(76, 175, 79, 0.13) !important;
   border-left-color: #4caf4f6c !important;
@@ -89,12 +109,14 @@ body::-webkit-scrollbar-track {
   color: #e8f5e8;
 }
 
+/* Системні відключення */
 .message-system.disconnect {
   background: rgba(244, 67, 54, 0.13) !important;
   border-left-color: #f443366c !important;
   color: #ffebee;
 }
 
+/* Повідомлення від відправника */
 .message-sender {
   background: linear-gradient(135deg, rgba(33, 150, 243, 0.3), rgba(33, 203, 243, 0.3)) !important;
   border-right: 4px solid #2196f3 !important;
@@ -105,6 +127,7 @@ body::-webkit-scrollbar-track {
   text-align: right;
 }
 
+/* Повідомлення отримувача */
 .message-recipient {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15)) !important;
   border-left-color: #ce93d8 !important;
@@ -114,11 +137,13 @@ body::-webkit-scrollbar-track {
   text-align: left;
 }
 
+/* Альтернативне забарвлення для кожного другого повідомлення */
 #message-container div:nth-child(2n) {
   background: rgba(255, 255, 255, 0.15);
   border-left-color: #ce93d8;
 }
 
+/* Контейнер вводу та кнопка відправки */
 #send-container {
   width: 90%;
   max-width: 1200px;
@@ -180,11 +205,12 @@ body::-webkit-scrollbar-track {
   box-shadow: 0 2px 6px rgba(0, 172, 193, 0.4);
 }
 
+/* Адаптивність для мобільних */
 @media (max-width: 600px) {
   #message-container div {
     max-width: 85%;
   }
-  
+
   .message-system {
     max-width: 80% !important;
   }
