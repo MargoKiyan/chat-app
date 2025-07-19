@@ -37,6 +37,7 @@ body::-webkit-scrollbar-track {
   flex-grow: 1;
   width: 90%;
   max-width: 1200px;
+  height: calc(100vh - 200px);
   overflow-y: scroll;
   padding: 25px;
   margin-top: 65px;
